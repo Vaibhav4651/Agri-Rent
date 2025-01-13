@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer & Tractor Booking</title>
+    <style>
+
+        @import url("https://fonts.googleapis.com/css?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  scroll-behavior: smooth;
+  font-family: "Poppins";
+}
+.login-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--main-color);
+    border-radius: 4rem;
+    box-shadow: 0 0 1rem var(--main-color);
+    font-size: 1.4rem;
+    color: var(--second-color);
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.5s ease;
+    position: fixed;
+    margin-top: -10px;
+    margin-left: auto;
+    cursor: pointer;
+    transition: 5s;
+  }
+  .login-btn:hover {
+    box-shadow: none;
+  }
+/* Customizing the title */
+.swal-title {
+  color: #000000 !important; /* Change title color */
+}
+
+/* Customizing the text */
+.swal-text {
+  color: #000000 !important; /* Change text color */
+}
+
+/* Customizing the button */
+.swal-button {
+  background-color: #053314 !important; /* Change button background color */
+  color: #ffffff !important; /* Change button text color */
+}
+
+/* Customizing the button on hover */
+.swal-button:hover {
+  background-color: #0e4b16 !important; /* Change button hover background color */
+}
+:root {
+  --bg-color: #053314;
+  --second-color: #064b10;
+  --txt-color: #fff;
+  --main-color: rgb(192, 223, 100);
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+body {
+  background-image: url(https://wallpaperbat.com/img/323465-wallpapermisc-green-grass-hd-wallpaper-13-2560-x-1600-free-top.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  color: var(--txt-color);
+  background-attachment: fixed;
+  background-size: cover;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+body {
+  scrollbar-width: none;
+}
+section {
+  min-height: 100vh;
+  padding: 10rem 9% 2rem;
+}
+
+.header img {
+  height: 6rem;
+  margin-right: 2rem;
+}
+.logo {
+  font-size: 2vmax;
+  color: var(--txt-color);
+  font-weight: 600;
+  margin-right: 0;
+  cursor: default;
+}
+.navbar a {
+  font-size: 1.5vmax;
+}
+@media (max-width: 768px) {
+  .navbar.active {
+    display: block;
+    height: 60vh !important;
+  }
+}
+
+section {
+  min-height: 100vh;
+  padding: 10rem 9% 2rem;
+}
+.header {
+  position: fixed;
+  opacity: 0.8;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 9%;
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  transition: all 0.8s;
+}
+.header.sticky {
+  opacity: 0.9;
+  padding: 2rem 10% 2rem 5%; /* Adjusted padding to ensure space for the sign-in button */
+  background-color: rgb(4, 125, 18);
+  box-shadow: 0 0 1.5px 2px rgb(14, 14, 14, 0.8);
+}
+
+nav {
+  margin-right: 10px;
+  display: flex;
+}
+
+.logo {
+  font-size: 2.5rem;
+  color: var(--txt-color);
+  font-weight: 600;
+  cursor: default;
+}
+.navbar a {
+  /* position: relative; */
+  font-size: 1.4rem;
+  /* left: 118px; */
+  color: var(--txt-color);
+  margin-right: 3.1rem;
+  transition: 0.3s;
+}
+.navbar a:hover {
+  color: var(--main-color);
+  animation: blink 1s infinite;
+  transform: scale(1.1);
+  text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.1);
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    color: var(--main-color);
+  }
+  50% {
+    color: transparent;
+  }
+}
+
+.navbar a:not(.active):hover {
+  color: var(--main-color);
+}
+
+.navbar a.active,
+.navbar a.active:hover {
+  color: var(--main-color);
+}
+.navbar.active {
+  display: block;
+}
+.navbar a {
+  position: relative;
+  font-size: 1.5rem;
+  color: var(--txt-color);
+  margin-right: 3.1rem;
+  transition: 0.3s;
+}
+
+.navbar a:hover::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px; /* Adjust height as needed */
+  background-color: rgb(255, 255, 255); /* Change to the desired color */
+  left: 0;
+  bottom: -5px; /* Adjust position as needed */
+}
+
+.navbar a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px; /* Adjust height as needed */
+  background-color: rgb(255, 255, 255); /* Change to the desired color */
+  left: 0;
+  bottom: -5px; /* Adjust position as needed */
+  transition: width 0.5s;
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            margin: 20px;
+            margin-top: 100px;
+            width: 80%;
+            gap: 20px;
+        }
+
+        .farmer-info, .tractor-info {
+            flex: 1;
+            border: 1px solid transparent;
+            padding: 15px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .farmer-info img, .tractor-info img {
+            width: 100%;
+            height: auto;
+            border-radius: 50px;
+        }
+
+        .farmer-info {
+            height: 500px;
+            text-align: center;
+        }
+
+        .farmer-info h2, .tractor-info h2 {
+            font-size: 20px;
+            text-align: center;
+            margin: 10px 0;
+        }
+        .farmer-info p, .tractor-info p {
+            font-size: 15px;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .calendar {
+            font-size: 15px;
+            margin: 20px 0;
+        }
+
+        .map {
+          height: auto;
+          width: 500px;
+            margin: 20px 0;
+        }
+        .map h3{
+          font-size: 20px;
+        }
+
+        #checkout {
+            background-color: #eb8e23;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #checkout:hover {
+            background-color: #45a049;
+        }
+
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    
+    <header class="header">
+        
+        <a href="#" class="logo" style="margin-inline-end: auto"
+          ><h3>AgriRent</h3>
+        </a>
+  
+        <!-- adding the toggle mode button -->
+        <a>
+          <div class="theme-toggle">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+          </div>
+        </a>
+        <i class="bx bx-menu" id="menu-icon"></i>
+        <nav class="navbar">
+          <a href="../index.html"><i class="fa-solid fa-house"></i> Home</a>
+          <a href="../about/about.html"
+            ><i class="fa-solid fa-circle-info"></i> About</a
+          >
+          <a href="../blog/blogpage.html" target="_self">
+            <i class="fa-solid fa-blog"></i> Blogs</a
+          >
+          <a href="vendor.html"
+            ><i class="fa-solid fa-book"></i> Vendors</a
+          >
+          <a href="../FAQS/faqpage.html" target="_self"
+            ><i class="fas fa-question-circle"></i>FAQs</a
+          >
+          <a href="../index.html#contact" id="nav--contact"
+            ><i class="fa-solid fa-phone"></i> Contact</a
+          >
+          <a href="./buy_products.html" class="active content"
+            ><i class="fa fa-shopping-cart"></i>Buy Products</a
+          >
+          <a href="../login/login.html">
+            <button id="log-in-btn" class="login-btn">Login</button>
+          </a>
+        </nav>
+      </header>
+
+    <div class="container">
+        <!-- Farmer Information -->
+        <div class="farmer-info">
+            <img src="https://t3.ftcdn.net/jpg/04/32/15/18/360_F_432151892_oQ3YQDo2LYZPILlEMnlo55PjjgiUwnQb.jpg" alt="Farmer">
+            <h2>Manik Kawle</h2>
+            <p>Location: Shree nagar, Nanded</p>
+            <p>Experience: 15 years in organic farming</p>
+        </div>
+
+        <!-- Tractor Information -->
+        <div class="tractor-info">
+            <img src="https://www.swarajtractors.com/sites/default/files/images/swaraj_985x590_744_XT.jpg" alt="Tractor">
+            <h2>John Deere 5065E</h2>
+            <p>Powerful 65 HP tractor ideal for plowing and harvesting.</p>
+            <p>Rental: Rs.1500/day</p>
+
+            <!-- Calendar for Booking -->
+            <div class="calendar">
+                <label for="booking-date">Select Booking Date:</label>
+                <input type="date" id="booking-date" name="booking-date">
+
+                <label for="booking-time">Select Booking Time:</label>
+                <input type="time" id="booking-time" name="booking-time">
+            </div>
+        </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="map">
+        <h3>Vendors Location</h3>
+        
+            
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.9998661054324!2d77.30716600000001!3d19.15148315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd1d66afa2e542b%3A0x5c3fce467d21522b!2sShree%20Nagar%2C%20Vazirabad%2C%20Nanded%2C%20Nanded-Waghala%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1734592412275!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            
+        
+    </div>
+
+    <!-- Checkout Button -->
+    <a href="checkout.html"><button id="checkout">Checkout</button></a> 
+
+    <script>
+        // Sample booked dates for the tractor
+        const bookedDates = ["2024-12-20", "2024-12-21"];
+
+        document.getElementById('checkout').addEventListener('click', () => {
+            const date = document.getElementById('booking-date').value;
+            const time = document.getElementById('booking-time').value;
+
+            if (!date || !time) {
+                alert('Please select both date and time for booking.');
+                return;
+            }
+
+            if (bookedDates.includes(date)) {
+                alert('Available for that date.');
+                return;
+            }
+
+            alert(`Your Booking confirmed for ${date} at ${time}.`);
+        });
+    </script>
+
+</body>
+</html>
