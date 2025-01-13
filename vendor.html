@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #053314;
+            color: #333;
+        } 
+        
+        header {
+            background-color: #4a4a47;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        } 
+        
+        header h1 {
+            margin: 0;
+        }
+        
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        main {
+            padding: 2rem;
+        }
+        
+        #search-section {
+            color: whitesmoke;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        #search-bar {
+            width: 50%;
+           
+            padding: 1rem;
+            font-size: 1rem;
+            border: 1px solid #d8cbcb;
+            border-radius: 5px;
+        }
+        
+        #vendor-list {
+            display: flex;
+            gap: 1rem;
+            flex-wrap:wrap;
+            text-align: center;
+            justify-content: center;
+        } 
+        
+        #vendor-list h2 {
+            text-align: center;
+        }
+        
+        .vendor-card {
+            width: 300px;
+            height: 300px; 
+            background-color: whitesmoke;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .vendor-card img.vendor-photo {
+            width: 100%;
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+        
+        .vendor-card h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .vendor-card p {
+            margin: 0.5rem 0;
+        }
+        
+        footer {
+            background-color: #353531;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        
+        
+    </style>
+    <script>
+        function searchVendors() {
+            const input = document.getElementById('search-bar').value.toLowerCase();
+            const vendorCards = document.querySelectorAll('.vendor-card');
+            let found = false;
+
+            vendorCards.forEach(card => {
+                const name = card.querySelector('.vendor-name').textContent.toLowerCase();
+                if (name.includes(input)) {
+                    card.style.display = '';
+                    found = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            const noResultMessage = document.getElementById('no-result-message');
+            if (!found) {
+                noResultMessage.style.display = 'block';
+            } else {
+                noResultMessage.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+     <header>
+        <h1>AgriRent</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="buyproducts/buy_products.html">Equipment</a></li>
+                <!-- <li><a href="payment.html">Payment</a></li> -->
+            </ul>
+        </nav>
+    </header> 
+
+    <main>
+        <section id="search-section">
+            <h2>Search for Vendors</h2>
+            <input type="text" id="search-bar" placeholder="Search by name..." onkeyup="searchVendors()">
+        </section>
+
+        <section id="vendor-list">
+            <!-- <h2>Registered Vendors</h2> -->
+    
+            <div class="vendor-card">
+                <a href="buyproducts/buy_products.html"><img src="https://media.istockphoto.com/id/1092520698/photo/indian-farmer-at-onion-field.jpg?s=612x612&w=0&k=20&c=gvu-DzA17EyVSNzvdf7L3R8q0iIvLapG15ktOimqXqU=" alt="Farmer 1" class="vendor-photo"></a>
+                <h3 class="vendor-name">Farmer Manik</h3>
+                <p><strong>Contact:</strong> 234 567 890</p>
+                <p><strong>Location:</strong> Nanded</p>
+                <p><strong>Specialization:</strong> Tractor and Irrigation Equipments Rental</p>
+            </div>
+
+            <div class="vendor-card">
+                <a href="buyproducts/buy_products.html"><img src="https://t3.ftcdn.net/jpg/04/32/15/18/360_F_432151892_oQ3YQDo2LYZPILlEMnlo55PjjgiUwnQb.jpg" alt="Farmer 2" class="vendor-photo"></a>
+                <h3 class="vendor-name">Farmer Ramrao</h3>
+                <p><strong>Contact:</strong> 345 678 901</p>
+                <p><strong>Location:</strong> Nanded </p>
+                <p><strong>Specialization:</strong> Tractor and Irrigation Equipments Rental</p>
+            </div>
+
+            <div class="vendor-card">
+                <a href="buyproducts/buy_products.html"><img src="https://media.gettyimages.com/id/1205325344/photo/farmer-in-agricultural-field.jpg?s=612x612&w=gi&k=20&c=oaBezArOCG8ospehPv_HqvM7RwsAvxqpSjkgIHQtq9w=" alt="Farmer 3" class="vendor-photo"></a>
+                <h3 class="vendor-name">Farmer Vishnu</h3>
+                <p><strong>Contact:</strong> 456 789 012</p>
+                <p><strong>Location:</strong> Nanded</p>
+                <p><strong>Specialization:</strong> Tractor and Irrigation Equipments Rental</p>
+            </div>
+
+
+            <div class="vendor-card">
+                <a href="buyproducts/buy_products.html"><img src="https://thumbs.dreamstime.com/b/indian-farmer-empty-hand-product-putting-pointing-finger-174017270.jpg" alt="Farmer 2" class="vendor-photo"></a>
+                <h3 class="vendor-name">Farmer Shivaji</h3>
+                <p><strong>Contact:</strong> 345 678 901</p>
+                <p><strong>Location:</strong> Nanded</p>
+                <p><strong>Specialization:</strong> Tractor and Irrigation Equipments Rental</p>
+            </div>
+
+            <div class="vendor-card">
+                <a href="buyproducts/buy_products.html"><img src="https://media.gettyimages.com/id/1205325344/photo/farmer-in-agricultural-field.jpg?s=612x612&w=gi&k=20&c=oaBezArOCG8ospehPv_HqvM7RwsAvxqpSjkgIHQtq9w=" alt="Farmer 3" class="vendor-photo"></a>
+                <h3 class="vendor-name">Farmer Madhav</h3>
+                <p><strong>Contact:</strong> 456 789 012</p>
+                <p><strong>Location:</strong> Nanded</p>
+                <p><strong>Specialization:</strong> Tractor and Irrigation Equipments Rental</p>
+            </div>
+
+            <div class="vendor-card">
+                <a href="buyproducts/buy_products.html"><img src="https://www.shutterstock.com/image-photo/happy-indian-farmer-standing-agriculture-260nw-2237896487.jpg" alt="Farmer 2" class="vendor-photo"></a>
+                <h3 class="vendor-name">Farmer Kerba</h3>
+                <p><strong>Contact:</strong> 345 678 901</p>
+                <p><strong>Location:</strong> Nanded</p>
+                <p><strong>Specialization:</strong> Tractor and Irrigation Equipments Rental</p>
+            </div>
+
+            <div class="vendor-card">
+                <a href="buyproducts/buy_products.html"><img src="https://t4.ftcdn.net/jpg/02/49/44/77/360_F_249447740_y1nJDCFwqVMbRzeV8VQu0NIOdlyPk7ZY.jpg" alt="Farmer 3" class="vendor-photo"></a>
+                <h3 class="vendor-name">Farmer dagdu</h3>
+                <p><strong>Contact:</strong> 456 789 012</p>
+                <p><strong>Location:</strong> Nanded</p>
+                <p><strong>Specialization:</strong> Tractor and Irrigation Equipments Rental</p>
+            </div>
+            <div class="vendor-card">
+                <a href="buyproducts/buy_products.html"><img src="https://media.istockphoto.com/id/1284378353/photo/young-indian-farmer-using-smartphone-in-cotton-field.jpg?s=612x612&w=0&k=20&c=aX43jYLkw0Hmd8HJPM8krTWqDu6JHos4wsd1p9kzwXQ=" alt="Farmer 1" class="vendor-photo"></a>
+                <h3 class="vendor-name">Farmer Hanmant</h3>
+                <p><strong>Contact:</strong> 234 567 890</p>
+                <p><strong>Location:</strong> Nanded</p>
+                <p><strong>Specialization:</strong> Tractor and Irrigation Equipments Rental</p>
+            </div>
+
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Copyright © 2024 by AgriRent | All Rights Reserved | Terms and Conditions | Privacy Policy</p>
+    </footer>
+</body>
+</html>
